@@ -6,7 +6,6 @@ package net.jordisan.recipesapi.model;
 import java.net.URL;
 
 import javax.persistence.*;
-import org.hibernate.annotations.CreationTimestamp;
 
 /**
  * @author jordisan
@@ -14,11 +13,7 @@ import org.hibernate.annotations.CreationTimestamp;
  */
 @Entity
 @Table(name="recipes")
-public class Recipe {
-	
-	@Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-	public long id;
+public class Recipe extends BaseEntity {
 	
 	@Column(name = "title", nullable = false)
 	public String title;
@@ -32,10 +27,6 @@ public class Recipe {
 	@Column(name = "photo_url", nullable = true)
 	public java.net.URL photoUrl;
 	
-	@Column(name = "creation_date", nullable = false)
-	@CreationTimestamp
-	public java.util.Date creationDate;
-
 	// Constructors 
 
 	public Recipe() {}

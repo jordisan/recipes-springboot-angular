@@ -9,7 +9,9 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
 import net.jordisan.recipesapi.model.Recipe;
+import net.jordisan.recipesapi.model.Ingredient;
 import net.jordisan.recipesapi.repository.RecipeRepository;
+import net.jordisan.recipesapi.repository.IngredientRepository;
 
 /**
  * @author jordisan
@@ -20,9 +22,16 @@ import net.jordisan.recipesapi.repository.RecipeRepository;
 public class RecipeController {
     @Autowired
     private RecipeRepository recipeRepository;
+    @Autowired
+    private IngredientRepository ingredientRepository;
 
     @GetMapping("/recipes")
     public List<Recipe> getAllRecipes() {
         return recipeRepository.findAll();
+    }
+    
+    @GetMapping("/ingredients")
+    public List<Ingredient> getAllIngredients() {
+        return ingredientRepository.findAll();
     }
 }

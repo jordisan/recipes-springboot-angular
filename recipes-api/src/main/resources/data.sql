@@ -1,4 +1,5 @@
-INSERT INTO recipes (title, description, instructions, photo_url, creation_date) VALUES (
+INSERT INTO recipes (id, title, description, instructions, photo_url, creation_date) VALUES (
+	1,
 	'Spanish omelette',
 	'Potato omelette with onion',
 	'Scrape 500g new potatoes or leave the skins on, if you prefer.
@@ -20,3 +21,9 @@ and cool for 10 minutes before serving.',
 	'https://flexit.es/tortilla-espa%C3%B1ola.jpg',
 	'2020-02-02 22:22'
 );
+
+INSERT INTO ingredients (id, name) VALUES (1, 'potato');
+INSERT INTO ingredients (id, name) VALUES (2, 'onion');
+INSERT INTO ingredients (id, name) VALUES (3, 'extra-virgin olive oil');
+INSERT INTO ingredients (id, name) VALUES (4, 'egg');
+INSERT INTO ingredients (id, name) VALUES (5, 'salt');
