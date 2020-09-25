@@ -3,6 +3,8 @@
  */
 package net.jordisan.recipesapi.model;
 
+import java.net.URL;
+
 import javax.persistence.*;
 import org.hibernate.annotations.CreationTimestamp;
 
@@ -20,6 +22,19 @@ public class Recipe {
 	private String instructions;
 	private java.net.URL photoUrl;
 	private java.util.Date creationDate;
+
+	// Constructors 
+
+	public Recipe() {}
+	public Recipe(String title, String description, String instructions, URL photoUrl) {
+		super();
+		this.title = title;
+		this.description = description;
+		this.instructions = instructions;
+		this.photoUrl = photoUrl;
+	}
+	
+	// Getters / setters
 	
 	@Id
     @GeneratedValue(strategy = GenerationType.AUTO)
@@ -29,7 +44,7 @@ public class Recipe {
 	public void setId(long id) {
 		this.id = id;
 	}
-	
+
 	@Column(name = "title", nullable = false)
 	public String getTitle() {
 		return title;
@@ -37,11 +52,11 @@ public class Recipe {
 	public void setTitle(String title) {
 		this.title = title;
 	}
-	
+
 	@Column(name = "description", nullable = true)
 	public String getDescription() {
 		return description;
-	}
+	}	
 	public void setDescription(String description) {
 		this.description = description;
 	}
@@ -61,7 +76,7 @@ public class Recipe {
 	public void setPhotoUrl(java.net.URL photoUrl) {
 		this.photoUrl = photoUrl;
 	}
-	
+
 	@Column(name = "creation_date", nullable = false)
 	@CreationTimestamp
 	public java.util.Date getCreationDate() {
@@ -70,4 +85,5 @@ public class Recipe {
 	public void setCreationDate(java.util.Date creationDate) {
 		this.creationDate = creationDate;
 	}
+
 }
