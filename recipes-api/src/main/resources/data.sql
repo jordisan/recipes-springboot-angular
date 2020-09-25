@@ -27,3 +27,9 @@ INSERT INTO ingredients (id, name) VALUES (2, 'onion');
 INSERT INTO ingredients (id, name) VALUES (3, 'extra-virgin olive oil');
 INSERT INTO ingredients (id, name) VALUES (4, 'egg');
 INSERT INTO ingredients (id, name) VALUES (5, 'salt');
+
+INSERT INTO recipes_ingredients (recipe_id, ingredient_id, quantity, units) VALUES (1, 1, 500, 'g');
+INSERT INTO recipes_ingredients (recipe_id, ingredient_id, quantity, units, details) VALUES (1, 2, 1, 'units', 'preferably white');
+INSERT INTO recipes_ingredients (recipe_id, ingredient_id, quantity, units) VALUES (1, 3, 150, 'ml');
+INSERT INTO recipes_ingredients (recipe_id, ingredient_id, quantity, units) VALUES (1, 4, 6, 'units');
+INSERT INTO recipes_ingredients (recipe_id, ingredient_id, quantity, units) VALUES (1, 5, 1, 'a bit');

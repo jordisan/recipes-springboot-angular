@@ -4,6 +4,8 @@
 package net.jordisan.recipesapi.model;
 
 import java.net.URL;
+import java.util.HashSet;
+import java.util.Set;
 
 import javax.persistence.*;
 
@@ -26,6 +28,9 @@ public class Recipe extends BaseEntity {
 	
 	@Column(name = "photo_url", nullable = true)
 	public java.net.URL photoUrl;
+	
+	@OneToMany(mappedBy = "recipe")
+	public Set<RecipeIngredient> recipesIngredients = new HashSet<>();
 	
 	// Constructors 
 
