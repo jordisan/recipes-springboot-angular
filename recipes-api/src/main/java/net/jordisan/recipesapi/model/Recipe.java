@@ -37,7 +37,7 @@ public class Recipe {
 	// Getters / setters
 	
 	@Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
 	public long getId() {
 		return id;
 	}
@@ -61,7 +61,7 @@ public class Recipe {
 		this.description = description;
 	}
 	
-	@Column(name = "instructions", nullable = true)
+	@Column(name = "instructions", nullable = true, columnDefinition="TEXT")
 	public String getInstructions() {
 		return instructions;
 	}
