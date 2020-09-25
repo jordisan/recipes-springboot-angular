@@ -4,8 +4,9 @@
 package net.jordisan.recipesapi.repository;
 
 import org.springframework.stereotype.Repository;
-import net.jordisan.recipesapi.model.*;
 import org.springframework.data.jpa.repository.JpaRepository;
+
+import net.jordisan.recipesapi.model.Recipe;
 
 /**
  * @author jordisan
