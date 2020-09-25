@@ -5,6 +5,8 @@ package net.jordisan.recipesapi.model;
 
 import javax.persistence.*;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 /**
  * @author jordisan
  *
@@ -15,6 +17,7 @@ public class RecipeIngredient extends BaseEntity {
 
 	@ManyToOne
     @JoinColumn(name = "recipe_id")
+	@JsonIgnore
     public Recipe recipe;
 	
 	@ManyToOne
