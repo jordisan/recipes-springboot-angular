@@ -10,6 +10,7 @@ import com.fasterxml.jackson.annotation.JsonIdentityInfo;
 import com.fasterxml.jackson.annotation.ObjectIdGenerators;
 
 /**
+ * Base class for entities with common data
  * @author jordisan
  *
  */

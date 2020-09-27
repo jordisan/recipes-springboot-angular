@@ -10,6 +10,7 @@ import java.util.Set;
 import javax.persistence.*;
 
 /**
+ * Single recipe
  * @author jordisan
  *
  */
@@ -23,6 +24,10 @@ public class Recipe extends BaseEntity {
 	@Column(name = "description", nullable = true)
 	public String description;
 	
+	/**
+	 * Recipe instructions as a single text; 
+	 * TODO: separate this as steps in a different table?
+	 */
 	@Column(name = "instructions", nullable = true, columnDefinition="TEXT")
 	public String instructions;
 	

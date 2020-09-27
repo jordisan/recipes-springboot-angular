@@ -10,6 +10,7 @@ import java.util.Set;
 import javax.persistence.*;
 
 /**
+ * Generic ingredient
  * @author jordisan
  *
  */
