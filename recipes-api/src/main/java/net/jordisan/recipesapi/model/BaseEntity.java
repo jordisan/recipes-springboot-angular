@@ -16,10 +16,6 @@ import com.fasterxml.jackson.annotation.ObjectIdGenerators;
  */
 @MappedSuperclass
 @Inheritance(strategy = InheritanceType.TABLE_PER_CLASS)
-@JsonIdentityInfo(
-		generator = ObjectIdGenerators.PropertyGenerator.class, 
-		property = "id"
-)
 public abstract class BaseEntity {
 	
 	@Id

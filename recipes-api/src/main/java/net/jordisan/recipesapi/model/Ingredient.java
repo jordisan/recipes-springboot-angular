@@ -9,6 +9,9 @@ import java.util.Set;
 
 import javax.persistence.*;
 
+import com.fasterxml.jackson.annotation.JsonIdentityInfo;
+import com.fasterxml.jackson.annotation.ObjectIdGenerators;
+
 /**
  * Generic ingredient
  * @author jordisan
@@ -16,6 +19,11 @@ import javax.persistence.*;
  */
 @Entity
 @Table(name="ingredients")
+@JsonIdentityInfo(
+		scope = Ingredient.class,
+		generator = ObjectIdGenerators.PropertyGenerator.class, 
+		property = "id"
+)
 public class Ingredient extends BaseEntity {
 
 	@Column(name = "name", nullable = false)
