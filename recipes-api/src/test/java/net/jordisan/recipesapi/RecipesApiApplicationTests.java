@@ -57,5 +57,17 @@ class RecipesApiApplicationTests {
 		assertThat(ingredients).isNotEmpty();
 		System.out.println(ingredients.length + " ingredient(s)");
 	}
+	
+	@Test
+	public void getRecipeById() throws Exception {
+		int ID = 1;
+		ResponseEntity<Recipe> response = this.restTemplate.getForEntity(getBaseUrl() + "/recipes/" + ID, Recipe.class);
+		assertThat(response.getStatusCode()).isEqualTo(HttpStatus.OK);
+		Recipe recipe = response.getBody();
+		assertThat(recipe).isNotNull();
+		assertThat(recipe.id).isEqualTo(ID);
+		System.out.print("Recipe: " + recipe.title 
+				+ " has " + recipe.recipesIngredients == null ? 0 : recipe.recipesIngredients.size() + " ingredient(s)");
+	}
 
 }
