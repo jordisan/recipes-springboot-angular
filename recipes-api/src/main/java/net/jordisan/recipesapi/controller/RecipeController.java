@@ -6,7 +6,9 @@ package net.jordisan.recipesapi.controller;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.*;
+import org.springframework.web.server.ResponseStatusException;
 
 import net.jordisan.recipesapi.model.Recipe;
 import net.jordisan.recipesapi.model.Ingredient;
@@ -28,6 +30,11 @@ public class RecipeController {
     @GetMapping("/recipes")
     public List<Recipe> getAllRecipes() {
         return recipeRepository.findAll();
+    }
+    
+    @GetMapping("/recipes/{id}")
+    public Recipe getRecipeById(@PathVariable Long id) {
+        return recipeRepository.findById(id).orElseThrow(() -> new ResponseStatusException(HttpStatus.NOT_FOUND, "Recipe with id " + id + " not found"));
     }
     
     @GetMapping("/ingredients")

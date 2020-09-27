@@ -66,8 +66,15 @@ class RecipesApiApplicationTests {
 		Recipe recipe = response.getBody();
 		assertThat(recipe).isNotNull();
 		assertThat(recipe.id).isEqualTo(ID);
-		System.out.print("Recipe: " + recipe.title 
-				+ " has " + recipe.recipesIngredients == null ? 0 : recipe.recipesIngredients.size() + " ingredient(s)");
+		System.out.println("Recipe '" + recipe.title 
+				+ "' has " + (recipe.recipesIngredients == null ? 0 : recipe.recipesIngredients.size()) + " ingredient(s)");
+	}
+	
+	@Test
+	public void getRecipeByIdReturns404() throws Exception {
+		int ID = 0; // should not exist
+		ResponseEntity<Recipe> response = this.restTemplate.getForEntity(getBaseUrl() + "/recipes/" + ID, Recipe.class);
+		assertThat(response.getStatusCode()).isEqualTo(HttpStatus.NOT_FOUND);
 	}
 
 }
