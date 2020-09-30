@@ -19,7 +19,7 @@ import net.jordisan.recipesapi.repository.IngredientRepository;
  * @author jordisan
  *
  */
-@RestController @CrossOrigin(origins = "http://localhost:4200")
+@RestController @CrossOrigin(origins = {"http://localhost:4200", "http://localhost:9876"})
 @RequestMapping("/api/v1")
 public class RecipeController {
     @Autowired
