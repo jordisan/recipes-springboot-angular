@@ -6,22 +6,22 @@
             <tr>
                 <th>Title</th>
                 <th>Description</th>
+                <th>Ingredients</th>                
                 <th>Instructions</th>
                 <th>Photo</th>
-                <th>Ingredients</th>
               </tr>
         </thead>
         <tbody>
             <tr *ngFor="let recipe of recipes | async">
-                <td>{{recipe.title}}</td>
+                <td><a [routerLink]="['.', recipe.id]" routerLinkActive="active">{{recipe.title}}</a></td>
                 <td>{{recipe.description}}</td>
-                <td>{{recipe.instructions.truncate()}}</td>
-                <td><img src="{{recipe.photoUrl}}" alt="{{recipe.title}}" /></td>
                 <td>
                     <span *ngFor="let recipeIngredient of recipe.recipesIngredients">
                         {{recipeIngredient.ingredient.name}}
                     </span>
-                </td>
+                </td>                
+                <td>{{recipe.instructions.truncate()}}</td>
+                <td><img src="{{recipe.photoUrl}}" alt="{{recipe.title}}" /></td>
               </tr>
         </tbody>
     </table>
