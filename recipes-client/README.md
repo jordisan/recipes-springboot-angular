@@ -29,3 +29,4 @@ To get more help on the Angular CLI use `ng help` or go check out the [Angular C
 ## TODO
 
 - Api base URL in config
+- Add unit tests (mocking services, API, etc.)

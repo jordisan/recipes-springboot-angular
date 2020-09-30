@@ -1,0 +1,28 @@
+<section class="recipe-list">
+    <h2>Recipe List</h2>
+
+    <table>
+        <thead>
+            <tr>
+                <th>Title</th>
+                <th>Description</th>
+                <th>Instructions</th>
+                <th>Photo</th>
+                <th>Ingredients</th>
+              </tr>
+        </thead>
+        <tbody>
+            <tr *ngFor="let recipe of recipes | async">
+                <td>{{recipe.title}}</td>
+                <td>{{recipe.description}}</td>
+                <td>{{recipe.instructions.truncate()}}</td>
+                <td><img src="{{recipe.photoUrl}}" alt="{{recipe.title}}" /></td>
+                <td>
+                    <span *ngFor="let recipeIngredient of recipe.recipesIngredients">
+                        {{recipeIngredient.ingredient.name}}
+                    </span>
+                </td>
+              </tr>
+        </tbody>
+    </table>
+</section>
