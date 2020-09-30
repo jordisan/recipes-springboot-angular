@@ -9,7 +9,9 @@ import { Recipe } from '../models/recipe';
 })
 export class RecipeService {
 
-  private baseUrl = 'http://localhost:8080/recipes-api/api/v1';
+  private baseUrl = process.env.NODE_ENV ? 
+    'https://recipes-api-springboot.herokuapp.com/recipes-api/api/v1' :
+    'http://localhost:8080/recipes-api/api/v1';
 
   constructor(private http: HttpClient) { }
 
