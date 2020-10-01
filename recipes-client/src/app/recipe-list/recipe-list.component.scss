@@ -1,5 +1,30 @@
 .recipe-list {
-    td img {
-        height: 100px;
+    th {
+        white-space: nowrap;
+    }
+
+    td {
+        padding: .5em .2em;
+        vertical-align: top;
+
+        img {
+            height: 100px;
+        }
+    }
+
+    .sort {
+        border: none;
+        background: none;
+        font-weight: bold;
+        text-decoration: underline;
+
+        &.active {
+            &.ASC::after {
+                content: ' \25b2';
+            }
+            &.DESC::after {
+                content: ' \25bc';
+            }
+        }
     }
 }

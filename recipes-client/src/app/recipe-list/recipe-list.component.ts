@@ -30,6 +30,14 @@ export class RecipeListComponent implements OnInit {
     return SortDirection[this.sortDirection];
   }
 
+  getSortCssClass(col: string): string {
+    let cssClass: string = 'sort';
+    if (col === this.sortBy) {
+      cssClass += ' active ' + this.getSortDirection();
+    }
+    return cssClass
+  }
+
   reloadData(col: string = null) {
     if (col !== null) {
       if (col === this.sortBy) {

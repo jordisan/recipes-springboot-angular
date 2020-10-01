@@ -5,16 +5,16 @@
         <thead>
             <tr>
                 <th>
-                    <button class="sort" (click)="reloadData('title')">Title</button>
+                    <button [class]="getSortCssClass('title')" (click)="reloadData('title')">Title</button>
                 </th>
                 <th>
-                    <button class="sort" (click)="reloadData('description')">Description</button>
+                    <button [class]="getSortCssClass('description')" (click)="reloadData('description')">Description</button>
                 </th>
                 <th>Ingredients</th>                
                 <th>Instructions</th>
                 <th>Photo</th>
                 <th>
-                    <button class="sort" (click)="reloadData('creationDate')">Creation date</button>
+                    <button [class]="getSortCssClass('creationDate')" (click)="reloadData('creationDate')">Creation date</button>
                 </th>
               </tr>
         </thead>

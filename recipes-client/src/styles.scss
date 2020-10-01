@@ -1,1 +1,17 @@
 /* You can add global styles to this file, and also import other style files */
+
+/* Importing Bootstrap SCSS file. */
+@import '~bootstrap/scss/bootstrap';
+
+body {
+    padding: 20px 50px;
+}
+
+h1 {
+    text-align: center;
+}
+
+h2, h3 {
+    padding-top: 0.5em;
+    padding-bottom: 0.2em;
+}
