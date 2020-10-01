@@ -6,6 +6,7 @@ package net.jordisan.recipesapi.controller;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Sort;
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.server.ResponseStatusException;
@@ -28,8 +29,11 @@ public class RecipeController {
     private IngredientRepository ingredientRepository;
 
     @GetMapping("/recipes")
-    public List<Recipe> getAllRecipes() {
-        return recipeRepository.findAll();
+    public List<Recipe> getAllRecipes(
+		@RequestParam(defaultValue = "title") String sortBy, 
+		@RequestParam(defaultValue = "ASC") Sort.Direction sortDirection
+	) {
+        return recipeRepository.findAll(Sort.by(sortDirection, sortBy));
     }
     
     @GetMapping("/recipes/{id}")
@@ -38,7 +42,10 @@ public class RecipeController {
     }
     
     @GetMapping("/ingredients")
-    public List<Ingredient> getAllIngredients() {
-        return ingredientRepository.findAll();
+    public List<Ingredient> getAllIngredients(
+		@RequestParam(defaultValue = "name") String sortBy, 
+		@RequestParam(defaultValue = "ASC") Sort.Direction sortDirection    		
+	) {
+        return ingredientRepository.findAll(Sort.by(sortDirection, sortBy));
     }
 }

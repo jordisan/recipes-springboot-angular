@@ -39,6 +39,7 @@ public class Recipe extends BaseEntity {
 	public java.net.URL photoUrl;
 	
 	@OneToMany(mappedBy = "recipe")
+	@OrderBy("id")
 	public Set<RecipeIngredient> recipesIngredients = new HashSet<>();
 	
 	// Constructors 

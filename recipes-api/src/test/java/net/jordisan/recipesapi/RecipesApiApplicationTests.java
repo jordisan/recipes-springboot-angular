@@ -14,6 +14,13 @@ import static org.assertj.core.api.Assertions.*;
 import net.jordisan.recipesapi.controller.RecipeController;
 import net.jordisan.recipesapi.model.*;
 
+/**
+ * We will consider H2 data (data.sql) as test data.
+ * Also, we implement integration tests instead of unit tests because there's little business logic
+ * and we expect errors to be caused more likely by integration between layers.
+ * @author jordisan
+ *
+ */
 @SpringBootTest(webEnvironment = WebEnvironment.RANDOM_PORT)
 class RecipesApiApplicationTests {
 	
@@ -70,6 +77,21 @@ class RecipesApiApplicationTests {
 		int ID = 0; // should not exist
 		ResponseEntity<Recipe> response = this.restTemplate.getForEntity(getBaseUrl() + "/recipes/" + ID, Recipe.class);
 		assertThat(response.getStatusCode()).isEqualTo(HttpStatus.NOT_FOUND);
+	}
+	
+	@Test
+	public void getRecipesOrderBy() throws Exception {
+		ResponseEntity<Recipe[]> response = this.restTemplate.getForEntity(getBaseUrl() + "/recipes?sortBy=id&sortDirection=ASC", Recipe[].class);
+		assertThat(response.getStatusCode()).isEqualTo(HttpStatus.OK);
+		Recipe[] recipesAsc = response.getBody();
+		assertThat(recipesAsc).isNotEmpty();
+		
+		response = this.restTemplate.getForEntity(getBaseUrl() + "/recipes?sortBy=id&sortDirection=DESC", Recipe[].class);
+		assertThat(response.getStatusCode()).isEqualTo(HttpStatus.OK);
+		Recipe[] recipesDesc = response.getBody();
+		assertThat(recipesDesc).isNotEmpty();
+		
+		assertThat(recipesAsc[0].id).isNotEqualTo(recipesDesc[0].id);	// make sure that they return recipes in different order 
 	}
 
 }
