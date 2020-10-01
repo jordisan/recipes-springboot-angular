@@ -5,9 +5,8 @@ package net.jordisan.recipesapi.model;
 
 import javax.persistence.*;
 
-import com.fasterxml.jackson.annotation.JsonIdentityInfo;
-import com.fasterxml.jackson.annotation.JsonIgnore;
-import com.fasterxml.jackson.annotation.ObjectIdGenerators;
+import com.fasterxml.jackson.annotation.JsonBackReference;
+import com.fasterxml.jackson.annotation.JsonManagedReference;
 
 /**
  * Use of an ingredient in a recipe
@@ -16,11 +15,6 @@ import com.fasterxml.jackson.annotation.ObjectIdGenerators;
  */
 @Entity
 @Table(name="recipes_ingredients")
-@JsonIdentityInfo(
-		scope = RecipeIngredient.class,
-		generator = ObjectIdGenerators.PropertyGenerator.class, 
-		property = "id"
-)
 public class RecipeIngredient extends BaseEntity {
 	
 	// We will use the explicit id instead of a composite primary key;
@@ -28,11 +22,12 @@ public class RecipeIngredient extends BaseEntity {
 
 	@ManyToOne
     @JoinColumn(name = "recipe_id")
-	@JsonIgnore	// to avoid infinite loops, we won't include recipes when serializing ingredients 
+	@JsonBackReference
     public Recipe recipe;
 	
 	@ManyToOne
     @JoinColumn(name = "ingredient_id")
+	@JsonManagedReference
     public Ingredient ingredient;
 	
 	@Column(name = "quantity", nullable = true)

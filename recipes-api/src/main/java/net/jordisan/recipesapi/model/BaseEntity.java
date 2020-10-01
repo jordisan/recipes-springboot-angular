@@ -6,9 +6,6 @@ package net.jordisan.recipesapi.model;
 import javax.persistence.*;
 import org.hibernate.annotations.CreationTimestamp;
 
-import com.fasterxml.jackson.annotation.JsonIdentityInfo;
-import com.fasterxml.jackson.annotation.ObjectIdGenerators;
-
 /**
  * Base class for entities with common data
  * @author jordisan
