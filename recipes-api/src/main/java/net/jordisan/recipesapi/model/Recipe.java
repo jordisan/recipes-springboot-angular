@@ -9,7 +9,8 @@ import java.util.Set;
 
 import javax.persistence.*;
 
-import com.fasterxml.jackson.annotation.JsonManagedReference;
+import com.fasterxml.jackson.annotation.JsonIdentityInfo;
+import com.fasterxml.jackson.annotation.ObjectIdGenerators;
 
 /**
  * Single recipe
@@ -18,6 +19,7 @@ import com.fasterxml.jackson.annotation.JsonManagedReference;
  */
 @Entity
 @Table(name="recipes")
+@JsonIdentityInfo(generator = ObjectIdGenerators.PropertyGenerator.class, property = "id", scope = Recipe.class)
 public class Recipe extends BaseEntity {
 	
 	@Column(name = "title", nullable = false)
@@ -37,7 +39,6 @@ public class Recipe extends BaseEntity {
 	public java.net.URL photoUrl;
 	
 	@OneToMany(mappedBy = "recipe")
-	@JsonManagedReference
 	public Set<RecipeIngredient> recipesIngredients = new HashSet<>();
 	
 	// Constructors 
