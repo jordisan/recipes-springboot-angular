@@ -5,6 +5,11 @@ import { Ingredient } from '../models/ingredient';
 import { Recipe } from '../models/recipe';
 import { environment } from "../../environments/environment";
 
+export enum SortDirection {
+  ASC,
+  DESC
+}
+
 @Injectable({
   providedIn: 'root'
 })
@@ -14,12 +19,18 @@ export class RecipeService {
 
   constructor(private http: HttpClient) { }
 
-  getIngredientsList(): Observable<Ingredient[]> {
-    return this.http.get<Ingredient[]>(`${this.baseUrl}/ingredients`);
+  getIngredientsList(sortBy: string = 'name', sortDirection: SortDirection = SortDirection.ASC): Observable<Ingredient[]> {
+    return this.http.get<Ingredient[]>(`${this.baseUrl}/ingredients`, { params: {
+      sortBy: sortBy,
+      sortDirection: SortDirection[sortDirection]
+    }});
   }
 
-  getRecipesList(): Observable<Recipe[]> {
-    return this.http.get<Recipe[]>(`${this.baseUrl}/recipes`);
+  getRecipesList(sortBy: string = 'title', sortDirection: SortDirection = SortDirection.DESC): Observable<Recipe[]> {
+    return this.http.get<Recipe[]>(`${this.baseUrl}/recipes`, { params: {
+      sortBy: sortBy,
+      sortDirection: SortDirection[sortDirection]
+    }});
   }
 
   getRecipe(id: number): Observable<Recipe> {

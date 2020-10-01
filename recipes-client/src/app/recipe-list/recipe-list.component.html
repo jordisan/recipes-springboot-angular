@@ -1,14 +1,21 @@
-<section class="recipe-list">
+<section class="recipe-list sort-by-{{sortBy}} sort-direction-{{getSortDirection()}}">
     <h2>Recipe List</h2>
 
     <table>
         <thead>
             <tr>
-                <th>Title</th>
-                <th>Description</th>
+                <th>
+                    <button class="sort" (click)="reloadData('title')">Title</button>
+                </th>
+                <th>
+                    <button class="sort" (click)="reloadData('description')">Description</button>
+                </th>
                 <th>Ingredients</th>                
                 <th>Instructions</th>
                 <th>Photo</th>
+                <th>
+                    <button class="sort" (click)="reloadData('creationDate')">Creation date</button>
+                </th>
               </tr>
         </thead>
         <tbody>
@@ -22,6 +29,7 @@
                 </td>                
                 <td>{{recipe.instructions.truncate()}}</td>
                 <td><img src="{{recipe.photoUrl}}" alt="{{recipe.title}}" /></td>
+                <td>{{recipe.creationDate | date}}</td>
               </tr>
         </tbody>
     </table>

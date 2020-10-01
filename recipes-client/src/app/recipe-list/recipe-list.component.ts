@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { Observable } from 'rxjs';
 import { Recipe } from '../models/recipe';
-import { RecipeService } from '../services/recipe.service';
+import { RecipeService, SortDirection } from '../services/recipe.service';
 import '../global.js';
 
 @Component({
@@ -14,6 +14,9 @@ export class RecipeListComponent implements OnInit {
 
   recipes: Observable<Recipe[]>;
 
+  sortBy: string = 'title';
+  sortDirection: SortDirection = SortDirection.ASC;
+
   constructor(
     private recipeService: RecipeService,
     private router: Router
@@ -23,8 +26,22 @@ export class RecipeListComponent implements OnInit {
     this.reloadData();
   }
 
-  reloadData() {
-    this.recipes = this.recipeService.getRecipesList();
+  getSortDirection(): string {
+    return SortDirection[this.sortDirection];
+  }
+
+  reloadData(col: string = null) {
+    if (col !== null) {
+      if (col === this.sortBy) {
+        // if current col, invert direction
+        this.sortDirection = this.sortDirection === SortDirection.ASC ? SortDirection.DESC : SortDirection.ASC;
+      } else {
+        // diferent col
+        this.sortBy = col;
+        this.sortDirection = SortDirection.ASC;
+      }
+    }
+    this.recipes = this.recipeService.getRecipesList(this.sortBy, this.sortDirection);
   }
 
 }
