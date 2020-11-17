@@ -3,7 +3,6 @@ import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
 import { Ingredient } from '../models/ingredient';
 import { Recipe } from '../models/recipe';
-import { environment } from "../../environments/environment";
 import { BaseService } from './base.service';
 
 export enum SortDirection {

@@ -1,14 +1,7 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
-import { Ingredient } from '../models/ingredient';
-import { Recipe } from '../models/recipe';
 import { environment } from "../../environments/environment";
-
-export enum SortDirection {
-  ASC,
-  DESC
-}
 
 @Injectable({
   providedIn: 'root'
